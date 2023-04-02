@@ -8,6 +8,9 @@ require('dotenv').config()
 let count = 0
 
 
+console.log()
+
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
@@ -22,21 +25,12 @@ app.get('/', (req, res)=>{
     res.render('site/index')
 })
 
+
+
 app.post('/', async(req, res)=>{
-    count++
     let {mail} = await req.body
-    new Promise((resolve, reject)=>{
-        help.gmailMesaj(mail, help.numberProduct(5))
-        resolve('ok')
-    })
-    .then(()=>{
-        console.log('Mesaj başarılı bir şekilde gönderildi')
-        res.redirect('/')
-    })
-    .catch((err)=>{
-        res.redirect('/')
-        console.log(err)
-    })
+    help.gmailMesaj(mail, help.numberProduct(5))
+    res.redirect('/')
 })
 
 

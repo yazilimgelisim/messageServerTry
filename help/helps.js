@@ -2,6 +2,7 @@ module.exports = {
     gmailMesaj:(hedefGmail, key)=>{
         require('dotenv').config()
         const nodemailer = require('nodemailer')
+        console.log(process.env.MAIL_ADRESS)
         async function main() {
             let transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
