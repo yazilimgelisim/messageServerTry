@@ -10,6 +10,9 @@ module.exports = {
                 auth: {
                     user: process.env.MAIL_ADRESS, // generated ethereal user
                     pass: process.env.MAIL_PASSWORD, // generated ethereal password
+                },
+                tls:{
+                    rejectUnauthorized:false
                 }
             });
 
