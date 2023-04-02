@@ -10,7 +10,7 @@ module.exports = {
                 auth: {
                     user: process.env.MAIL_ADRESS, // generated ethereal user
                     pass: process.env.MAIL_PASSWORD, // generated ethereal password
-                },
+                }
             });
 
             let info = await transporter.sendMail({
