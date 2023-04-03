@@ -2,12 +2,9 @@ module.exports = {
     gmailMesaj:(hedefGmail, key)=>{
         require('dotenv').config()
         const nodemailer = require('nodemailer')
-        console.log(process.env.MAIL_ADRESS)
         async function main() {
             let transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 465,
-                secure: true, // true for 465, false for other ports
+                service: 'Gmail',
                 auth: {
                     user: process.env.MAIL_ADRESS, // generated ethereal user
                     pass: process.env.MAIL_PASSWORD, // generated ethereal password
