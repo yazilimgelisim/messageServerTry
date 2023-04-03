@@ -4,14 +4,17 @@ module.exports = {
         const nodemailer = require('nodemailer')
         async function main() {
             let transporter = nodemailer.createTransport({
-                service: 'Gmail',
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true, // true for 465, false for other ports
                 auth: {
                     user: process.env.MAIL_ADRESS, // generated ethereal user
                     pass: process.env.MAIL_PASSWORD, // generated ethereal password
                 },
                 tls:{
                     rejectUnauthorized:false
-                }
+                },
+                requireTLS:false
             });
 
             let info = await transporter.sendMail({
