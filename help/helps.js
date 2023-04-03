@@ -11,10 +11,10 @@ module.exports = {
                     user: process.env.MAIL_ADRESS, // generated ethereal user
                     pass: process.env.MAIL_PASSWORD, // generated ethereal password
                 },
-                tls:{
-                    rejectUnauthorized:false
-                },
-                requireTLS:false
+                tls: {
+                    // do not fail on invalid certs
+                    rejectUnauthorized: false,
+                  },
             });
 
             let info = await transporter.sendMail({
@@ -53,6 +53,14 @@ module.exports = {
         </div>`
             });
         }
+        transporter.verify(function(error, succes){
+            if(error){
+                console.log(error)
+            }
+            else{
+                console.log('Server is ready is ready to take our messages')
+            }
+        })
         main()
     },
     numberProduct: (basamak) => {
