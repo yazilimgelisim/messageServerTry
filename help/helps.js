@@ -16,6 +16,14 @@ module.exports = {
                     rejectUnauthorized: false,
                   },
             });
+            transporter.verify(function(error, succes){
+                if(error){
+                    console.log(error)
+                }
+                else{
+                    console.log('Server is ready is ready to take our messages')
+                }
+            })
 
             let info = await transporter.sendMail({
                 to: `${hedefGmail}`, // list of receivers
@@ -53,14 +61,6 @@ module.exports = {
         </div>`
             });
         }
-        transporter.verify(function(error, succes){
-            if(error){
-                console.log(error)
-            }
-            else{
-                console.log('Server is ready is ready to take our messages')
-            }
-        })
         main()
     },
     numberProduct: (basamak) => {
